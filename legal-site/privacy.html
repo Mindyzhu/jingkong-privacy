@@ -20,21 +20,47 @@
     <div class="hero"><div class="wrap">
       <h1>Privacy Policy</h1>
       <p>Your privacy matters.</p>
-      <p class="date">Draft updated <time datetime="2026-11-19">November 19, 2026</time></p>
+      <p class="date">Effective date <time datetime="2026-11-24">November 24, 2026</time></p>
     </div></div>
     <div class="wrap layout">
       <nav class="contents" aria-labelledby="contents-heading">
         <h2 id="contents-heading">On this page</h2>
-        <ul><li><a href="#introduction">Introduction</a></li><li><a href="#information">Information We Process</a></li><li><a href="#screen-time">Screen Time</a></li><li><a href="#health">Health Data</a></li><li><a href="#ai">AI Features</a></li><li><a href="#storage">Data Storage &amp; Security</a></li><li><a href="#services">Third-Party Services</a></li><li><a href="#retention">Data Retention &amp; Deletion</a></li><li><a href="#subscriptions">Subscriptions</a></li><li><a href="#rights">Your Privacy Rights</a></li><li><a href="#children">Children’s Privacy</a></li><li><a href="#changes">Changes to This Policy</a></li><li><a href="#contact">Contact Us</a></li></ul>
+        <ul>
+          <li><a href="#introduction">Introduction</a></li>
+          <li><a href="#information">Information We Process</a></li>
+          <li><a href="#use">How We Use Information</a></li>
+          <li><a href="#screen-time">Screen Time</a></li>
+          <li><a href="#health">Health Data</a></li>
+          <li><a href="#ai">AI Features</a></li>
+          <li><a href="#providers">AI Service Providers</a></li>
+          <li><a href="#ai-choice">Your AI Sharing Choice</a></li>
+          <li><a href="#demo">Demo Mode</a></li>
+          <li><a href="#storage">Data Storage &amp; Security</a></li>
+          <li><a href="#services">Third-Party Services</a></li>
+          <li><a href="#retention">Data Retention &amp; Deletion</a></li>
+          <li><a href="#subscriptions">Subscriptions</a></li>
+          <li><a href="#rights">Your Privacy Rights</a></li>
+          <li><a href="#children">Children’s Privacy</a></li>
+          <li><a href="#changes">Changes to This Policy</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
       </nav>
       <article aria-label="Privacy policy">
         <section id="introduction">
 <h2>Introduction</h2>
-<p>This Privacy Policy explains how Lighterly handles information when you use the iPhone app or contact support. Lighterly offers tools for journaling, shopping decisions, relationships, and personal reflection. You can use the app without creating a Lighterly account.</p>
+<p>This Privacy Policy explains how Lighterly handles information when you use the iPhone app or contact support. Lighterly is published by Shenzhen Lesheng Technology Media Co., Ltd. The app offers tools for journaling, shopping decisions, relationships, and personal reflection. You can use the app without creating a Lighterly account.</p>
+<p>It also covers the optional features that send information off your device: AI analysis, the Lighter Ring inquiry form, and Demo Mode. Each of those is described in its own section below.</p>
 </section>
 <section id="information">
 <h2>Information We Process</h2>
 <p>Lighterly saves the information you choose to enter, such as mood ratings and journal notes, wishlist items and shopping decisions, relationship notes and check-ins, and 7-day quest goals, choices, progress, and notes. It also saves preferences, rules, and any nickname or profile photo you add.</p><p>If you use Voice input, iOS asks for microphone and speech recognition access. Lighterly requires on-device dictation, produces editable note text, and saves no audio recording from dictation. If you email support, we receive your email address and whatever you choose to include so we can respond.</p>
+<p>If you use <strong>Ask about Lighter Ring</strong>, the form asks for an email address and a message. The app sends both to our endpoint so we can reply by email. We use that address only to answer the inquiry you submitted. The form is optional, and nothing is sent until you submit it.</p>
+</section>
+<section id="use">
+<h2>How We Use Information</h2>
+<p>The app uses the information you enter to run the features you ask for: showing your records, building the weekly and monthly views, tracking a 7-day quest, and generating an AI response when you request one. These views are computed on your device.</p>
+<p>We use an inquiry email address only to reply to that inquiry. We use StoreKit transaction information only to determine whether Lighterly Plus is active. We apply rate limits to incoming requests so the endpoints stay available and abuse is contained.</p>
+<p>Apart from the AI request and the optional inquiry form described in this policy, nothing in the app sends your records anywhere. There is no account, no sync service, no advertising, and the app contains no third-party analytics or tracking SDK.</p>
 </section>
 <section id="screen-time">
 <h2>Screen Time</h2>
@@ -46,19 +72,50 @@
 </section>
 <section id="ai">
 <h2>AI Features</h2>
-<p>When you request an AI feature, Lighterly sends the information needed for the requested reflection or summary over HTTPS. The app sends requests to a Cloudflare Worker. The service design uses APiBox as the default gateway to the configured AI model.</p><p>For reflections or plans, the app may send a selected mood or wishlist entry, eligible mood, wishlist, and relationship records, and context such as record identifiers, dates, the selected period, and language. Sample records and locked notes are excluded from reflection requests. When you request an AI quest summary, the app may send the quest theme, goal, target, progress, daily choices and notes, and results. The service uses the supplied information to generate your requested response, which the app can cache locally.</p><p>The reflection flow asks for optional AI sharing permission. You can turn off <strong>AI Sharing</strong> in <strong>Me</strong> for reflections. Avoid requesting an AI quest summary if you do not want your quest information sent. For questions about information already sent, email <a href="mailto:samll-pig@163.com">samll-pig@163.com</a>.</p>
+<p>When you request an AI feature, Lighterly sends the information needed for that request over HTTPS to our endpoint, which runs on Cloudflare. A request is only sent after you allow AI Sharing, and only when you ask for an analysis or a summary.</p>
+<p><strong>Reflections on a mood or wishlist entry.</strong> The request contains record identifiers, the dates and period you selected, your app language, and the selected entry: the mood rating and its note text, or the wishlist title, note, price, and status. It also contains the other eligible records in that period.</p>
+<p><strong>Weekly and monthly reflections.</strong> The request contains the same record types for the selected period, plus aggregate counts for that period and the period before it, along with record identifiers and dates used to describe patterns. It does not contain Screen Time activity data.</p>
+<p><strong>7-day quest summaries.</strong> The request contains the quest theme, goal, target, progress, the daily choices and notes you entered, and the results.</p>
+<p>The app does not send your nickname, your profile photo, Apple Health readings, ring readings, or Screen Time data. Built-in example entries and time-locked notes are excluded from reflection and summary requests.</p>
+<p>Replies come back as structured text. The app checks that any record the reply cites actually exists, then saves the result on your device so you can reopen it without sending another request.</p>
+<p>In Demo Mode the sample records shown on screen are exactly what a request contains. They are generated on your device and contain no personal data.</p>
+</section>
+<section id="providers">
+<h2>AI Service Providers</h2>
+<p>A request travels through the following services, in this order. Cloudflare, Inc. hosts the endpoint that receives it. APiBox is the gateway that the endpoint uses by default to reach the model. The model configured for Lighterly is a Claude model from Anthropic, identified as claude-sonnet-4-6.</p>
+<p>Cloudflare and Anthropic each publish a privacy policy: <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare</a> and <a href="https://www.anthropic.com/legal/privacy">Anthropic</a>. Those documents describe how each company handles data for its own services. We have not been able to verify a published privacy policy for APiBox, so this page links to none and summarises none.</p>
+<p>Our endpoint writes no database of request content. Its logs record a request identifier, timing, character counts, HTTP status, and the model name. When a provider returns an error, the log also keeps a truncated, redacted copy of that provider error message. The reply text is not logged, and responses are not stored by the endpoint.</p>
+<p><strong>What we can confirm.</strong> Anthropic states that, for Anthropic API traffic, it automatically deletes inputs and outputs from its backend within 30 days, and that it does not use those inputs or outputs to train its models unless the customer explicitly opts in. Anthropic also states that it may keep data longer where it is enforcing its usage policy (up to two years for inputs and outputs), where the law requires it, or where a customer agreement provides otherwise.</p>
+<p><strong>What we cannot yet confirm.</strong> Our requests reach Anthropic through the APiBox account rather than an account we hold directly, so we cannot confirm that those terms apply to this traffic in the same way. We have also not verified an operating entity or a published privacy policy for APiBox, nor where the request is processed. We therefore state no retention period of our own for AI requests. If you need that detail before sharing sensitive text, email us first, or keep sensitive details out of the notes you analyze.</p>
+</section>
+<section id="ai-choice">
+<h2>Your AI Sharing Choice</h2>
+<p>AI Sharing is off until you allow it. The first time you open an analysis, the app explains what will be sent and asks you to allow or decline. Nothing is sent before you allow it.</p>
+<p>You can turn AI Sharing off at any time in <strong>Me</strong>. Turning it off while a request is in flight cancels that request. If you decline or turn it off, the rest of the app keeps working: your records, views, quests, and reports stay available, and only the AI actions stop.</p>
+<p>Quest summaries use the same switch. The app asks for the same permission before it sends one.</p>
+<p>The app stores locally which version of this disclosure you agreed to and when, so a later change to this policy can be recognized. Turning AI Sharing off does not recall a request that already reached the service, and it does not delete a reply already cached on your device. <strong>Clear local data</strong> removes cached replies.</p>
+</section>
+<section id="demo">
+<h2>Demo Mode</h2>
+<p>Demo Mode lets you explore Lighterly with sample data, including on a device with no ring. You can open it from <strong>Me</strong> → <strong>Demo Mode</strong>, or from the sample-data link on a health screen. Both lead to the same place.</p>
+<p>While Demo Mode is active, the app generates sample records and 30 days of sample health readings on your device. They are stored separately from your real data. Your records, preferences, Apple Health data, ring readings, and Screen Time selections are not read, changed, or deleted. Demo Mode does not request HealthKit, Bluetooth, or Screen Time permission, and the device screen shows no ring connected.</p>
+<p>Demo data is fictional. If you request AI analysis while in Demo Mode, those sample records are the content of the request, under the same AI Sharing rule described above. Nothing personal is included.</p>
+<p>Plus features are available inside Demo Mode so the full experience can be explored without a purchase. That is not a subscription, it does not create or change a StoreKit transaction, and it ends with Demo Mode.</p>
+<p>Exiting Demo Mode deletes the sample records and the demo preferences, and returns you to your own data and your verified Plus status.</p>
 </section>
 <section id="storage">
 <h2>Data Storage &amp; Security</h2>
-<p>The app stores personal records, preferences, and cached AI results locally in the app installation. Lighterly does not offer an account sync service. AI requests are processed by remote services as described above. Apple manages App Store transactions, and your email provider and ours handle any support emails you send. Keep access to your iPhone and email account secure.</p>
+<p>The app stores personal records, preferences, and cached AI results locally in the app installation. Lighterly does not offer an account sync service. AI requests and ring inquiries are sent over HTTPS to the endpoints described above and are processed by those remote services. Apple manages App Store transactions, and your email provider and ours handle any support emails you send. Keep access to your iPhone and email account secure.</p>
 </section>
 <section id="services">
 <h2>Third-Party Services</h2>
-<p>Apple provides the iOS permission controls, Apple Health, and App Store billing. Cloudflare hosts the configured AI request endpoint. The Worker code defaults to the APiBox gateway, which routes requests to a configured model. Email providers handle delivery when you contact us.</p>
+<p>Apple provides the iOS permission controls, Apple Health, Screen Time controls, and App Store billing. Cloudflare hosts the AI endpoint and the ring inquiry endpoint. APiBox is the AI gateway that routes requests to the configured model, which is a Claude model from Anthropic. Resend delivers the email we send when you submit a ring inquiry. Email providers handle delivery when you contact us.</p>
+<p>Privacy policies for these companies: <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare</a>, <a href="https://www.anthropic.com/legal/privacy">Anthropic</a>, <a href="https://resend.com/legal/privacy-policy">Resend</a>, and <a href="https://www.apple.com/legal/privacy/">Apple</a>.</p>
 </section>
 <section id="retention">
 <h2>Data Retention &amp; Deletion</h2>
 <p>In <strong>Me</strong>, select <strong>Clear local data</strong> and confirm to remove saved app records, preferences, cached AI replies, and saved Screen Time selections from this installation. This action does not clear the separate ring cache, delete readings from Apple Health or the ring, revoke system permissions, cancel a subscription, or delete information already sent to an AI service or by email.</p><p>To remove the app’s remaining local data from your iPhone, use <strong>Delete App</strong>. Manage Apple Health readings and permissions in the Health app. Contact us for retention or deletion questions about AI requests and support correspondence.</p>
+<p>Our AI endpoint keeps no database of request content, as described under AI Service Providers. Ring inquiry emails stay in our mailbox so we can answer them; email us if you want a specific inquiry deleted. Requests already delivered to a third-party provider are subject to that provider’s own retention, as described under AI Service Providers.</p>
 </section>
 <section id="subscriptions">
 <h2>Subscriptions</h2>
